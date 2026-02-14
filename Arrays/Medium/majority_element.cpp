@@ -1,20 +1,21 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
+#include<unordered_map>
 using namespace std;
 int majority_element(vector<int>&nums){
     int n = nums.size();
     int count =0;
-    int maxcount=0;
+    unordered_map<int, int> mpp;
     for(int i=0;i<n;i++){
-        for(int j=i+1;j<n;j++){
-            if(nums[i]==nums[j]){
-                count++;
-                maxcount = max(maxcount,count);
-            }
-        }
+        mpp[nums[i]]++;
     }
-    return maxcount;
+    for(auto &it : mpp){
+        if(it.second>n/2)
+        return it.first;
+    }
+    return -1;
+    
 }
 int main(){
    int n ;
