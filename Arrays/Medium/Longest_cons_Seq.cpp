@@ -15,3 +15,37 @@
 //  The longest sequence of consecutive elements in the array is [0, 1, 2, 3, 4, 5, 6, 7, 8], which has a length of 9.
 
 
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int longest_consecutive(vector<int>&nums){
+    int n = nums.size();
+    sort(nums.begin(),nums.end()); // 1 2 3 4 100 200
+    int count =1;
+    int longest=1;
+    for(int i=1;i<n;i++){
+      if(nums[i]==nums[i-1]){
+       continue;
+      }
+      if(nums[i]==nums[i-1]+1){
+        count++;
+      }
+      else{
+        count =1;
+      }
+      longest = max(longest,count);
+    }
+    return longest;
+}
+
+int main(){
+    int n;
+    cin>>n;
+    vector<int>nums(n);
+    for(int i =0;i<n;i++){
+        cin>>nums[i];
+    }
+    cout<<longest_consecutive(nums)<<" ";
+    return 0;
+}
