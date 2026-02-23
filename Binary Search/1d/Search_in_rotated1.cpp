@@ -14,7 +14,7 @@ Explanation :Here, the target is 3. Since 3 is not present in the given rotated 
 using namespace std;
 
 int rotated(vector<int>&nums, int x){
-    sort(nums.begin(),nums.end());
+   
     int N = nums.size();
     int low=0;
     int high = N-1;
@@ -25,12 +25,25 @@ int rotated(vector<int>&nums, int x){
             return mid;
         }
         
-        else if(nums[mid]<x){
-         low = mid+1;
+        
+       if(nums[low]<=nums[mid]){
+        if(nums[low]<=x && x<=nums[mid]){
+            high =  mid-1;
         }
-        else {
+        else{
+            low = mid+1;
+        }
+       }
+       
+
+       else{
+        if(nums[mid]<x && x<=nums[high]){
+            low = mid+1;
+        }
+        else{
             high = mid-1;
         }
+       }
     }
     return -1;
 }
