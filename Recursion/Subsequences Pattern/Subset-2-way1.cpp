@@ -7,18 +7,23 @@ void helper(vector<int>&nums, int index , int sum , vector<int>&curr , vector<ve
         res.push_back(curr);
 return;
     }
+    
     helper(nums, index+1, sum , curr, res);
+    
+    
     curr.push_back(nums[index]);
-    helper(nums, index+1, sum+nums[index] , curr, res);
+    helper(nums, index+1, sum , curr, res);
 curr.pop_back();
 }
  
 vector<vector<int>>subset2(vector<int>&nums){
+   
     vector<vector<int>>res;
     vector<int>curr;
 
     helper(nums,0,0,curr,res);
-    sort(nums.begin(),nums.end());
+  sort(res.begin(), res.end());
+    res.erase(unique(res.begin(), res.end()), res.end());
     return res;
 }
 
