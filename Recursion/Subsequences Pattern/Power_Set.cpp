@@ -24,8 +24,8 @@ int main(){
     string s;
     cin>>s;
     vector<string>ans = powerset(s);
-    for(int i =0;i<ans.size();i++){
-       cout << "\"" << ans[i] << "\"" << endl;
-    }
-    return 0;
+   for (int i = 0; i < ans.size(); i++) {
+    cout << "\"" << ans[i] << "\"" << endl;
+}
+
 }
