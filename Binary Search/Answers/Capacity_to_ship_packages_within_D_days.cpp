@@ -10,6 +10,7 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
+#include <numeric>
 using namespace std;
 
 int dayscount(vector<int>&weight , int capacity){
